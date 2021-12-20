@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  ansible.builtin.package:
+    name: "{{ packages_install | union(packages_install_extra) }}"
+    state: present
+
+- name: Remove packages
+  ansible.builtin.package:
+    name: "{{ packages_remove | union(packages_remove_extra) }}"
+    state: absent
